@@ -1,0 +1,47 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json  # Optional: include if you use yarn exclusively
+yarn.lock         # Optional: include if you use npm exclusively
+
+# TypeScript
+*.tsbuildinfo
+dist/             # Common output directory for compiled JS
+build/            # Alternative output directory
+out/             # Another possible output directory
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Dependency directories
+bower_components/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+*.lcov
+
+# Build artifacts
+*.js  # Optional: if you only want to commit source TS files
+*.js.map
