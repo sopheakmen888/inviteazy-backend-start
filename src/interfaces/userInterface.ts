@@ -3,7 +3,7 @@ export interface IUser {
   name: string;
   email: string;
   password: string;
-  role: "admin" | "public" | "tourist";
+  role: "admin" | "public" | "tourist" | "user";
 }
 
 export interface IUserWithoutPassword extends Omit<IUser, "password"> {}
