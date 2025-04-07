@@ -34,13 +34,13 @@ db.<collection>.find()
 docker volume create inviteazy-pgdata
 
 docker run -d \
-  --name postgres001 \
-  -e POSTGRES_USER=<username> \
-  -e POSTGRES_PASSWORD=<password> \
-  -e POSTGRES_DB=<database-name> \
-  -p 5433:5432 \
-  -v inviteazy-pgdata:/var/lib/postgresql/data \
-  postgres:latest
+  --name postgres002 \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=12345678 \
+  -e POSTGRES_DB=postgres \
+  -p 54322:5432 \
+  -v pg-data:/var/lib/postgresql/data \
+  postgres:14.5
 
 # Access psql inside container
 docker exec -it postgres001 psql -U postgres
