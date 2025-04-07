@@ -67,3 +67,11 @@ export const validateIdInURLParam = (
     next(error);
   }
 };
+
+export const eventSchema = z.object({
+  name: z.string().min(3),
+  date: z.coerce.date(), // accepts a string like "2025-06-12" and converts to Date
+  time: z.string(),       // use string here like "18:00"
+  location: z.string(),
+  description: z.string().optional(),
+});

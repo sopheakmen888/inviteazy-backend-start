@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const connectMongoDB = async () => {
   try {
-    const URI = "mongodb://localhost:27017/";
+    const URI = "mongodb+srv://Vouchh:m7uvvkp8U1gDtFem@cluster0.ftxsw.mongodb.net/";
     const connOptions = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
