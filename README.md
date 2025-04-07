@@ -4,8 +4,7 @@
 
 ```bash
 # Option 1: set up with no credential
-docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
-
+docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secret -d mongodb/mongodb-community-server:latest
 # Option 2: set up with initdb credential
 docker run --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secret -d mongodb/mongodb-community-server:latest
 
@@ -70,6 +69,10 @@ VALUES ('John Doe', 'john@example.com', 'user', 'hashed_password');
 SELECT * FROM users;
 ```
 
+
+
+
+
 #### 3. Start Redis Container for Server Cache
 
 ```bash
@@ -90,4 +93,20 @@ REDIS_URL=redis://localhost:6379
 npm install
 
 npm run dev
+```
+
+#### 6. Start MariaDB Database Container
+
+docker run -d \
+  --name mariadb-container \
+  -e MARIADB_ROOT_PASSWORD=my-secret-pw \
+  -e MARIADB_DATABASE=mydb \
+  -e MARIADB_USER=myuser \
+  -e MARIADB_PASSWORD=mypassword \
+  -p 3306:3306 \
+  mariadb:latest
+
+# Access mariadb inside container
+```bash
+  docker exec -it mariadb-container mariadb -u root -p
 ```

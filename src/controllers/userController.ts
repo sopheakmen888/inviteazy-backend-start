@@ -32,7 +32,6 @@ export class UserController {
         });
         return;
       }
-
       const { id } = req.params;
       const result = await this.userService.getUserById(id);
 
@@ -46,12 +45,16 @@ export class UserController {
 
   async createUser(req: Request, res: Response, next: NextFunction) {
     try {
-      const { name, email, password, role }: Omit<IUser, "id"> = req.body;
+      const { name, email, password, role,phone_number,profile_picture,address }: Omit<IUser, "id"> = req.body;
       const newUser = await this.userService.createUser({
         name,
         email,
         password,
         role,
+        phone_number,
+        profile_picture,
+        address,
+
       });
       res
         .status(201)

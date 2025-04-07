@@ -8,6 +8,8 @@ export class AuthController {
     this.userService = userService;
   }
 
+  
+
   async login(req: Request, res: Response, next: NextFunction) {
     try {
       const { email, password }: Omit<IUser, "id" | "role" | "name"> = req.body;
