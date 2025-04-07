@@ -9,6 +9,12 @@ import authRoutes from "./routes/authRoutes";
 import { connectPostgresDb } from "./config/postgresdb/db";
 import { PostgresUserRepository } from "./repositories/postgres/userRepository";
 import { loggingMiddleware } from "./middlewares/loggingMiddleware";
+import { MongoUserRepository } from "./repositories/mongodb/userRepository";
+import { connectMongoDB } from "./config/mongodb/db";
+import eventRouter from "./routes/eventRoutes"
+import {EventController} from "./controllers/eventController";
+import { EventService } from "./services/eventService";
+import { PostgresEventRepository } from "./repositories/postgres/eventRepository";
 
 dotenv.config();
 
@@ -22,13 +28,16 @@ const pgPool = connectPostgresDb();
 // Repositories
 // const userRepository = new MongoUserRepository();
 const userRepository = new PostgresUserRepository(pgPool);
+const eventRepository = new PostgresEventRepository(pgPool);
 
 // Services
 const userService = new UserService(userRepository);
+const eventService = new EventService(eventRepository);
 
 // Controllers
 const userController = new UserController(userService);
 const authController = new AuthController(userService);
+const eventController= new EventController(eventService);
 
 // Middlewares
 app.use(express.json());
@@ -37,10 +46,11 @@ app.use(loggingMiddleware);
 // Routes
 app.use("/api/users", userRoutes(userController));
 app.use("/api/auth", authRoutes(authController));
+app.use("/api/v1/events", eventRouter(eventController));
 
 // Handle Errors
 app.use(errorMiddleware);
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${2}`);
 });
