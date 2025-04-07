@@ -25,4 +25,5 @@ export interface IUserService {
     email: string,
     password: string
   ): Promise<{ user: IUserWithoutPassword; token: string }>;
+  
 }
