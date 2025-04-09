@@ -6,7 +6,6 @@ import {
 } from "../interfaces/userInterface";
 import jwt from "jsonwebtoken";
 import bycrpt from "bcrypt";
-
 export class UserService implements IUserService {
   constructor(private userRepository: IUserRepository) {}
 
