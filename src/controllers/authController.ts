@@ -18,4 +18,22 @@ export class AuthController {
       next(err);
     }
   }
+
+  async register(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { name, email, password, role = "user" }: Omit<IUser, "id"> = req.body;
+      const newUser = await this.userService.createUser({
+        name,
+        email,
+        password,
+        role,
+      });
+      res
+        .status(201)
+        .json({ message: "A new user was created.", data: newUser });
+    } catch (err) {
+      console.log(err);
+      next(err);
+    }
+  }
 }
