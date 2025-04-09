@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  mariadb:
+    image: mariadb:10
+    container_name: mariadb-container
+    environment:
+      MARIADB_ROOT_PASSWORD: 12345678 
+      MARIADB_DATABASE: inviteazy
+      MARIADB_USER: laiheang
+      MARIADB_PASSWORD: 12345678
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:

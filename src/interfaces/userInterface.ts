@@ -4,6 +4,11 @@ export interface IUser {
   email: string;
   password: string;
   role: "admin" | "public" | "tourist";
+  phone_number?:string;
+  profile_picture?:string;
+  address?:string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface IUserWithoutPassword extends Omit<IUser, "password"> {}
